@@ -4,16 +4,16 @@ controllers:
     publish_rate: 100
   robot_state_controller:
     type: robot_state_controller/RobotStateController
-    publish_rate: 200
+    publish_rate: 250
 
   trigger_calibration_controller:
     type: rm_calibration_controllers/MechanicalCalibrationController
     actuator: [ trigger_joint_motor ]
     velocity:
       joint: trigger_joint
-      search_velocity: 3.1415
-      vel_threshold: 0.2
-      pid: { p: 0.3, i: 0, d: 0.0, i_clamp_max: 0.0, i_clamp_min: 0.0, antiwindup: true }
+      search_velocity: 6.283
+      vel_threshold: 0.005
+      pid: { p: 0.7, i: 0, d: 0.0, i_clamp_max: 0.0, i_clamp_min: 0.0, antiwindup: true }
   cover_calibration_controller:
     type: rm_calibration_controllers/MechanicalCalibrationController
     actuator: [ cover_joint_motor ]
@@ -30,15 +30,15 @@ controllers:
     enable_odom_tf: true
     publish_odom_tf: false
     power:
-      effort_coeff: 5.0
-      vel_coeff: 0.006
+      effort_coeff: 3.5
+      vel_coeff: 0.0042
       power_offset: -8.41
     twist_angular: 0.5233
     max_odom_vel: 10.0
     timeout: 0.1
     pid_follow: { p: 6.5, i: 0, d: 0.0, i_max: 0.0, i_min: 0.0, antiwindup: true, publish_state: true }
     twist_covariance_diagonal: [ 0.001, 0.001, 0.001, 0.001, 0.001, 0.001 ]
-
+    K: 0.6
     # OmniController
     wheels:
       left_front:
@@ -60,6 +60,7 @@ controllers:
         pose: [ -0.147, -0.147, -0.785 ]
         joint: right_back_wheel_joint
         <<: *wheel_setting
+    k_v: 0.005
 
   orientation_controller:
     type: rm_orientation_controller/Controller
@@ -73,18 +74,18 @@ controllers:
     controllers:
       yaw:
         joint: "yaw_joint"
-        pid: { p: 0.7, i: 15.0, d: 0.0, i_clamp_max: 0.2, i_clamp_min: -0.2, antiwindup: true, publish_state: true }
-        pid_pos: { p: 20.0, i: 0, d: 0.01, i_max: 0.0, i_min: 0.0, antiwindup: true, publish_state: true }
-        chassis_comp_a: 1.68e-2
-        chassis_comp_b: 1.777e-1
-        chassis_comp_c: -1.2548
-        chassis_comp_d: 4.93e-2
+        pid: { p: 0.8, i: 16.0, d: 0.0, i_clamp_max: 0.25, i_clamp_min: -0.25, antiwindup: true, publish_state: true }
+        pid_pos: { p: 22.0, i: 0, d: 0, i_max: 0.0, i_min: 0.0, antiwindup: true, publish_state: true }
+        chassis_comp_a: 0.01297
+        chassis_comp_b: -0.21459
+        chassis_comp_c: -1.5708
+        chassis_comp_d: 0.01255
         k_v: 1.0
         accel: 28.0
       pitch:
         joint: "pitch_joint"
-        pid: { p: 0.5, i: 12.0, d: 0.0, i_clamp_max: 0.22, i_clamp_min: -0.22, antiwindup: true, publish_state: true }
-        pid_pos: { p: 20.0, i: 0, d: 0.0, i_max: 0.0, i_min: 0.0, antiwindup: true, publish_state: true }
+        pid: { p: 0.5, i: 15.0, d: 0.0, i_clamp_max: 0.1, i_clamp_min: -0.1, antiwindup: true, publish_state: true }
+        pid_pos: { p: 25.0, i: 0, d: 0.0, i_max: 0.0, i_min: 0.0, antiwindup: true, publish_state: true }
         k_v: 1.0
         accel: 40.0
     chassis_vel:
@@ -92,57 +93,77 @@ controllers:
       debug: true
     imu_name: "gimbal_imu"
     feedforward:
-      gravity: 8.2625
+      gravity: 9.8
       enable_gravity_compensation: false
-      mass_origin: [ 0.006,-0.000093,0.026159 ]
+      mass_origin: [ 0.01,0.0000,0.008159 ]
     bullet_solver:
+      #      resistance_coff_qd_16: 0.001
+      #      resistance_coff_qd_30: 0.001
+      #      g: 9.81
+      #      delay: 0.072
+      #      dt: 0.001
+      #      timeout: 0.001
+      #      min_switch_angle: 2
+      #      min_switch_count: 8
+      #      max_track_target_vel: 10.0
+      #      track_rotate_target_delay: 0.0
+      #      track_move_target_delay: 0.0
+      #      gimbal_switch_duration:
+      #        - [ 50.0,0.0 ]
       resistance_coff_qd_10: 0.001
       resistance_coff_qd_15: 0.001
       resistance_coff_qd_16: 0.001
       resistance_coff_qd_18: 0.001
       resistance_coff_qd_30: 0.001
       g: 9.81
-      delay: 0.028
+      delay: 0.06
       dt: 0.001
       timeout: 0.001
       publish_rate: 50
       max_switch_angle: 50
       min_switch_angle: 2
-      ban_shoot_duration: 0.032
-      gimbal_switch_duration: 0.076
-      max_track_target_vel: 10.8
-      max_chassis_angular_vel: 12.0
-      track_rotate_target_delay: 0.032
-      track_move_target_delay: 0.0
-      wait_next_armor_delay: 0.02
-      wait_diagonal_armor_delay: 0.02
+      max_track_target_vel: 15.0
+      max_chassis_angular_vel: 15.0
+      track_rotate_target_delay: -0.02
+      track_move_target_delay: 0.04
+      wait_next_armor_delay: 0.06
+      wait_diagonal_armor_delay: 0.06
+      switch_hysteresis: 0.7
+      switch_angle_offset: -0.2
+      switch_duration_scale: 0.045
+      switch_duration_rate: -0.03
+      switch_duration_offset: 0.063
 
   shooter_controller:
-    type: rm_shooter_controllers/Controller
+    type: rm_dshot_shooter_controllers/Controller
     publish_rate: 50
     friction:
       friction_left:
         left_friction_wheel:
           joint: "left_friction_wheel_joint"
-          pid: { p: 0.0007, i: 0.005, d: 0.0, i_clamp_max: 0.01, i_clamp_min: -0.01, antiwindup: true, publish_state: true }
+          pid: { p: 3.0, i: 0.3, d: 0.0, i_clamp_max: 20, i_clamp_min: -20, antiwindup: true, publish_state: true }
       friction_right:
         right_friction_wheel:
           joint: "right_friction_wheel_joint"
-          pid: { p: 0.0007, i: 0.005, d: 0.0, i_clamp_max: 0.01, i_clamp_min: -0.01, antiwindup: true, publish_state: true }
-          wheel_speed_direction: -1.0
+          pid: { p: 0.7, i: 0.0, d: 0.0, i_clamp_max: 20, i_clamp_min: -20, antiwindup: true, publish_state: true }
+      friction_mid:
+        mid_friction_wheel:
+          joint: "mid_friction_wheel_joint"
+          pid: { p: 3.0, i: 0.3, d: 0.0, i_clamp_max: 20, i_clamp_min: -20, antiwindup: true, publish_state: true }
     trigger:
       joint: "trigger_joint"
-      pid: { p: 35.0, i: 0.0, d: 1.0, i_clamp_max: 0.0, i_clamp_min: 0.0, antiwindup: true, publish_state: true }
-    push_per_rotation: 9
+      pid: { p: 35.0, i: 0.0, d: 0.5, i_clamp_max: 0.0, i_clamp_min: 0.0, antiwindup: true, publish_state: true }
+    push_per_rotation: 8
     push_qd_threshold: 0.90
     block_effort: 6.0
     block_speed: 0.1
     block_duration: 0.05
     block_overtime: 0.5
-    anti_block_angle: 0.46
+    anti_block_angle: 0.4
     anti_block_threshold: 0.1
     forward_push_threshold: 0.05
     exit_push_threshold: 0.07
-    wheel_speed_drop_threshold: 4.8
-    wheel_speed_raise_threshold: 1.7
+    wheel_speed_drop_threshold: 2.0
+    wheel_speed_raise_threshold: 2.0
     freq_threshold: 15.0
+    lp_cutoff_frequency: 100
