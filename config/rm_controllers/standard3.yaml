@@ -141,7 +141,7 @@ controllers:
           wheel_speed_direction: -1.0
     trigger:
       joint: "trigger_joint"
-      pid: { p: 33.0, i: 0.0, d: 1.0, i_clamp_max: 0.0, i_clamp_min: 0.0, antiwindup: true, publish_state: true }
+      pid: { p: 35.0, i: 0.0, d: 0.5, i_clamp_max: 0.0, i_clamp_min: 0.0, antiwindup: true, publish_state: true }
     push_per_rotation: 9
     push_qd_threshold: 0.90
     block_effort: 4.0
