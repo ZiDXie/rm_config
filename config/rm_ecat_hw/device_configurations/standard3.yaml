@@ -48,3 +48,16 @@ can_imus:
     bias: [ -0.000657925, 0.00058861, -0.000310835 ]
 dbus:
   - name: "dbus"
+lasers:
+  - can_bus: 1
+    can_id: 1
+    name: "left_laser"
+  - can_bus: 1
+    can_id: 2
+    name: "right_laser"
+  - can_bus: 0
+    can_id: 1
+    name: "front_laser"
+  - can_bus: 0
+    can_id: 2
+    name: "back_laser"
