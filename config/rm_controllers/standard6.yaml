@@ -141,15 +141,15 @@ controllers:
       friction_left:
         left_friction_wheel:
           joint: "left_friction_wheel_joint"
-          pid: { p: 1.0, i: 0.0, d: 0.0, i_clamp_max: 20, i_clamp_min: -20, antiwindup: true, publish_state: true }
+          pid: { p: 0.1, i: 1.5, d: 0.0, i_clamp_max: 20, i_clamp_min: -20, antiwindup: true, publish_state: true }
       friction_right:
         right_friction_wheel:
           joint: "right_friction_wheel_joint"
-          pid: { p: 1.0, i: 0.0, d: 0.0, i_clamp_max: 20, i_clamp_min: -20, antiwindup: true, publish_state: true }
+          pid: { p: 0.1, i: 1.5, d: 0.0, i_clamp_max: 20, i_clamp_min: -20, antiwindup: true, publish_state: true }
       friction_mid:
         mid_friction_wheel:
           joint: "mid_friction_wheel_joint"
-          pid: { p: 1.0, i: 0.0, d: 0.0, i_clamp_max: 20, i_clamp_min: -20, antiwindup: true, publish_state: true }
+          pid: { p: 0.1, i: 1.5, d: 0.0, i_clamp_max: 20, i_clamp_min: -20, antiwindup: true, publish_state: true }
     trigger:
       joint: "trigger_joint"
       pid: { p: 35.0, i: 0.0, d: 0.5, i_clamp_max: 0.0, i_clamp_min: 0.0, antiwindup: true, publish_state: true }
@@ -159,7 +159,7 @@ controllers:
     block_speed: 0.1
     block_duration: 0.05
     block_overtime: 0.5
-    anti_block_angle: 0.4
+    anti_block_angle: 0.5
     anti_block_threshold: 0.1
     forward_push_threshold: 0.05
     exit_push_threshold: 0.07
