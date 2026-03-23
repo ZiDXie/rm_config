@@ -19,6 +19,8 @@ rm_referee:
         config: { start_position: [ 100, 700 ], size: 15, width: 2, title: "target: " }
       - name: "target_view_angle"
         config: { type: "rectangle", start_position: [ 500, 240 ], end_position: [ 1420,840 ], width: 3 }
+      - name: "gyro"
+        config: { type: "rectangle", start_position: [ 920, 220 ], end_position: [ 980, 240 ], width: 2, color: "green" }
     #      - name: "target_hp"
     #        data:
     #          - { flag: num, config: { type: "int_num", start_position: [ 1150, 685 ], size: 20, width: 3 } }
@@ -71,7 +73,7 @@ rm_referee:
       #      - name: "max_bullet"
       #        config: { type: "string", start_position: [ 30, 560 ], size: 30, width: 3, color: "pink", content: "500/" }
       - name: "aim"
-        config: { type: "arc", start_position: [ 955, 480 ],end_position: [ 20,20 ],size: 10, width: 3, color: "green" }
+        config: { type: "arc", start_position: [ 955, 480 ],end_position: [ 20,20 ],size: 10, width: 3, color: "white" }
 
     flash:
       - name: "burst"

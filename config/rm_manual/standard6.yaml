@@ -9,12 +9,18 @@ rm_manual:
   chassis:
     topic: "/cmd_chassis"
     accel_x:
-      - [ 50.0,99.0 ]
+      - [ 50.0,11.0 ]
+      - [ 80.0,14.0 ]
+      - [ 100.0,20.0 ]
+      - [ 220.0,25.0 ]
     accel_y:
-      - [ 50.0,99.0 ]
+      - [ 50.0,11.0 ]
+      - [ 80.0,14.0 ]
+      - [ 100.0,20.0 ]
+      - [ 220.0,25.0 ]
     accel_z:
       - [ 50.0,99.0 ]
-    safety_power: 50
+    safety_power: 75
     capacitor_threshold: 0.3
     enable_cap_gyro_threshold: 0.8
     disable_cap_gyro_threshold: 0.7
@@ -36,7 +42,7 @@ rm_manual:
       - [ 100.0,2.5 ]
       - [ 220.0,3.0 ]
     max_linear_y:
-      - [ 50.0,1.5 ]
+      - [ 50.0,1.6 ]
       - [ 80.0,2.1 ]
       - [ 100.0,2.5 ]
       - [ 220.0,3.0 ]
@@ -70,30 +76,30 @@ rm_manual:
       timeout: 0.05
   shooter:
     topic: "/controllers/shooter_controller/command"
-    track_armor_error_tolerance: 0.06
-    untrack_armor_error_tolerance: 0.12
+    track_armor_error_tolerance: 0.08
+    untrack_armor_error_tolerance: 0.06
     track_buff_error_tolerance: 0.12
-    max_track_target_vel: 15.0
+    max_track_target_vel: 20.0
     target_acceleration_tolerance: 99.
     speed_10m_per_speed: 23.5
     speed_15m_per_speed: 23.5
     speed_16m_per_speed: 23.5
     speed_18m_per_speed: 23.5
     speed_30m_per_speed: 23.5
-    wheel_speed_15: 680.0
-    wheel_speed_18: 680.0
-    wheel_speed_30: 680.0
+    wheel_speed_15: 695.0
+    wheel_speed_18: 695.0
+    wheel_speed_30: 695.0
     wheel_speed_gain: 0.5
     extra_wheel_speed_once: 5.0
     speed_oscillation: 0.5
     auto_wheel_speed: false
     heat_limit:
-      low_shoot_frequency: 5
-      high_shoot_frequency: 5
-      burst_shoot_frequency: 5
-      minimal_shoot_frequency: 5
+      low_shoot_frequency: 10
+      high_shoot_frequency: 10
+      burst_shoot_frequency: 10
+      minimal_shoot_frequency: 10
       safe_shoot_frequency: 3
-      heat_coeff: 10.0
+      heat_coeff: 20.0
       use_local_heat: true
       local_heat_protect_threshold: 30
       type: "ID1_17MM"
@@ -105,7 +111,7 @@ rm_manual:
     service_name: "/forecast/status_switch"
   detection_switch:
     fail_limit: 10
-    service_name: "/Processor/status_switch"
+    service_name: "/Processor/status_change"
   exposure_switch:
     fail_limit: 10
     service_name: "/exposure_status_switch"
