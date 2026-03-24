@@ -79,8 +79,8 @@ rm_manual:
     track_armor_error_tolerance: 0.08
     untrack_armor_error_tolerance: 0.06
     track_buff_error_tolerance: 0.12
-    max_track_target_vel: 20.0
-    target_acceleration_tolerance: 99.
+    max_track_target_vel: 9.0
+    target_acceleration_tolerance: 99.0
     speed_10m_per_speed: 23.5
     speed_15m_per_speed: 23.5
     speed_16m_per_speed: 23.5
@@ -99,9 +99,9 @@ rm_manual:
       burst_shoot_frequency: 10
       minimal_shoot_frequency: 10
       safe_shoot_frequency: 3
-      heat_coeff: 20.0
+      heat_coeff: 5.0
       use_local_heat: true
-      local_heat_protect_threshold: 30
+      local_heat_protect_threshold: 40
       type: "ID1_17MM"
   buff_switch:
     fail_limit: 10
