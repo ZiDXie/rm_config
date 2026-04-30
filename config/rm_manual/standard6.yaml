@@ -20,16 +20,16 @@ rm_manual:
       - [ 220.0,99.0 ]
     accel_z:
       - [ 50.0,50.0 ]
-    safety_power: 75
+    safety_power: 50
     capacitor_threshold: 0.2
     enable_burst_cap_threshold: 0.3
     disable_burst_cap_threshold: 0.2
-    disable_normal_cap_threshold: 0.8
-    enable_gyro_cap_threshold: 0.6
-    disable_gyro_cap_threshold: 0.5
+    disable_normal_cap_threshold: 0.5
+    enable_gyro_cap_threshold: 0.3
+    disable_gyro_cap_threshold: 0.4
     extra_power: 0
-    burst_power: 220
-    gyro_power: 160
+    burst_power: 160
+    gyro_power: 120
     max_power_limit: 220
     buffer_threshold: 10
     power_gain: 0.0

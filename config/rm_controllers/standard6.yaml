@@ -32,8 +32,8 @@ controllers:
     slam_topic: "/Odometry"
     localization_topic: "/hdl_global_localization/result"
     power:
-      effort_coeff: 5.0
-      vel_coeff: 0.006
+      effort_coeff: 3.4
+      vel_coeff: 0.003
       power_offset: 11.5
       pivot_max_power: 50
       pivot_effort_coeff: 50
@@ -56,7 +56,7 @@ controllers:
           <<: &pivot_setting
             buffer_threshold: 10.0
             offset: 0.
-            pid: { p: 1.0, i: 0, d: 0.01, i_clamp_max: 0.0, i_clamp_min: -0.0, antiwindup: true, publish_state: false }
+            pid: { p: 6.0, i: 0, d: 0.03, i_clamp_max: 0.0, i_clamp_min: -0.0, antiwindup: true, publish_state: false }
         wheel:
           joint: left_front_wheel_joint
           <<: &wheel_setting
@@ -111,7 +111,7 @@ controllers:
           }
         pid_pos:
           {
-            p: 20.0,
+            p: 8.0,
             i: 0,
             d: 0.01,
             i_max: 0.0,
@@ -122,7 +122,7 @@ controllers:
         chassis_comp_a: 0.0
         chassis_comp_b: 0.0
         chassis_comp_c: 0.0
-        chassis_comp_d: 0.031
+        chassis_comp_d: 0.035
         k_v: 1.0
         accel: 28.0
       pitch:
@@ -184,6 +184,12 @@ controllers:
       switch_duration_offset: 0.069815
       yaw_max_acc: 60.0
       center_delay: 0.12
+    mpc_trajectory_planning:
+      Q_x_weight: 600000.0
+      Q_v_weight: 0.0
+      R_weight: 70.0
+      max_acc: 50.0
+      max_vel: 10.0
   shooter_controller:
     type: rm_shooter_controllers/Controller
     publish_rate: 50

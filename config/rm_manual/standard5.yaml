@@ -3,7 +3,7 @@ rm_manual:
   dbus_topic: "/rm_ecat_hw/dbus"
   chassis_calibrate_motor: [ ]
   gimbal_calibrate_motor: [ ]
-  shooter_calibrate_motor: [ "cover_joint_motor", "trigger_joint_motor" ]
+  shooter_calibrate_motor: [ "trigger_joint_motor" ]
   buff_gyro_rotate_limit: 6.0
   chassis:
     topic: "/cmd_chassis"
@@ -16,19 +16,20 @@ rm_manual:
       - [ 50.0,99.0 ]
     accel_z:
       - [ 50.0,99.0 ]
-    safety_power: 50
-    capacitor_threshold: 0.3
-    enable_cap_gyro_threshold: 0.8
-    disable_cap_gyro_threshold: 0.7
-    charge_power: 20
-    extra_power: 20
-    standard_power: 120
+    safety_power: 75
+    capacitor_threshold: 0.2
+    enable_burst_cap_threshold: 0.3
+    disable_burst_cap_threshold: 0.2
+    disable_normal_cap_threshold: 0.8
+    enable_gyro_cap_threshold: 0.6
+    disable_gyro_cap_threshold: 0.5
+    extra_power: 0
     burst_power: 220
-    max_power_limit: 80
+    gyro_power: 160
+    max_power_limit: 220
     buffer_threshold: 10
     power_gain: 0.0
     total_burst_time: 20
-    is_new_capacitor: true
   vel:
     topic: "/cmd_vel"
     power_limit_topic: "/cmd_chassis"
@@ -56,6 +57,38 @@ rm_manual:
   gimbal:
     topic: "/controllers/gimbal_controller/command"
     max_yaw_vel: 6.28
+    max_pitch_vel: 5.0
+    time_constant_rc: 0.02
+    time_constant_pc: 0.08
+    gimbal_scale: 10.0
+    track_timeout: 0.5
+    eject_sensitivity: 0.5
+    finish_turning_threshold: 2.9
+    pass_hole_angle: 0.1286
+    target_cost_function:
+      k_pos: 1.0
+      k_vel: 1.0
+      k_hp: 1.0
+      k_freq: 1.0
+      timeout: 0.05
+  base_yaw:
+    topic: "/controllers/base_yaw_controller/command"
+    max_yaw_vel: 6.28
+    time_constant_rc: 0.02
+    time_constant_pc: 0.08
+    gimbal_scale: 10.0
+    track_timeout: 0.5
+    eject_sensitivity: 0.5
+    finish_turning_threshold: 2.9
+    pass_hole_angle: 0.1286
+    target_cost_function:
+      k_pos: 1.0
+      k_vel: 1.0
+      k_hp: 1.0
+      k_freq: 1.0
+      timeout: 0.05
+  base_pitch:
+    topic: "/controllers/base_pitch_controller/command"
     max_pitch_vel: 5.0
     time_constant_rc: 0.02
     time_constant_pc: 0.08
@@ -98,10 +131,6 @@ rm_manual:
       heat_coeff: 20.0
       use_local_heat_: true
       type: "ID1_17MM"
-  cover:
-    topic: "/controllers/cover_controller/command"
-    on_pos: 1.94
-    off_pos: 0.013
   buff_switch:
     fail_limit: 10
     service_name: "/buff_status_switch"
@@ -124,25 +153,12 @@ rm_manual:
       - controllers/orientation_controller
       - controllers/gimbal_controller
       - controllers/shooter_controller
-      - controllers/cover_controller
+      - controllers/base_yaw_controller
+      - controllers/base_pitch_controller
     calibration_controllers:
       - controllers/trigger_calibration_controller
-      - controllers/cover_calibration_controller
-  #      - controllers/gimbal_calibration_controller
 
   gimbal_calibration:
-    #    - start_controllers:
-    #        - controllers/gimbal_calibration_controller
-    #      stop_controllers:
-    #        - controllers/gimbal_controller
-    #      services_name:
-    #        - /controllers/gimbal_calibration_controller/is_calibrated
-    - start_controllers:
-        - controllers/cover_calibration_controller
-      stop_controllers:
-        - controllers/cover_controller
-      services_name:
-        - /controllers/cover_calibration_controller/is_calibrated
   shooter_calibration:
     - start_controllers:
         - controllers/trigger_calibration_controller
@@ -150,9 +166,3 @@ rm_manual:
         - controllers/shooter_controller
       services_name:
         - /controllers/trigger_calibration_controller/is_calibrated
-
-controllers:
-  cover_controller:
-    type: effort_controllers/JointPositionController
-    joint: "cover_joint"
-    pid: { p: 5.0, i: 2.5, d: 0.5, i_clamp_max: 0.0, i_clamp_min: 0.0, antiwindup: true, publish_state: true }

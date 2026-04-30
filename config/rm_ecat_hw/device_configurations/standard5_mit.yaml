@@ -1,0 +1,14 @@
+can_motors:
+  - can_id: 1
+    can_bus: 0
+    name: "base_pitch_joint_motor"
+    type: "DM4340"
+  - can_id: 2
+    can_bus: 0
+    name: "base_yaw_joint_motor"
+    type: "DM6006"
+  - can_id: 3
+    can_bus: 0
+    name: "pitch_joint_motor"
+    type: "DM4310"
+
