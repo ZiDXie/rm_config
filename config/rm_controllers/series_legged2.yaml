@@ -155,11 +155,11 @@ controllers:
     spring_s2: 0.0486
     spring_s3: 0.20
     spring_alpha_s: 0.2448
-    gravity_force: 95
-    spring_force: 250
+    #    gravity_force: 95
+    #    spring_force: 250
     # use in gazebo
-    #    gravity_force: 70
-    #    spring_force: 0
+    gravity_force: 70
+    spring_force: 0
     default_leg_length: 0.12
 
     unstick_threshold: 10
