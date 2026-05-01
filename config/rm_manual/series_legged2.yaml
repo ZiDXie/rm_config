@@ -13,15 +13,15 @@ rm_manual:
       - [ 60.0,1.5 ]
       - [ 80.0,1.8 ]
       - [ 100.0,2.2 ]
-      - [ 280.0,3.0 ]
+      - [ 280.0,2.9 ]
     accel_y:
       - [ 60.0,3.0 ]
     accel_z:
       - [ 60.0,11.0 ]
       - [ 80.0,12.0 ]
       - [ 100.0,14.0 ]
-      - [ 280.0,28.5 ]
-    safety_power: 270
+      - [ 280.0,27.5 ]
+    safety_power: 260
     capacitor_threshold: 0.2
     charge_power: 40
     extra_power: 60
@@ -39,8 +39,8 @@ rm_manual:
       topic: "/leg_cmd"
       unstick_topic: "/controllers/chassis_controller/unstick/two_leg_unstick"
       short_leg_length: 0.15
-      mid_leg_length: 0.20
-      high_leg_length: 0.35
+      mid_leg_length: 0.21
+      high_leg_length: 0.345
   vel:
     topic: "/cmd_vel"
     power_limit_topic: "/cmd_chassis"
