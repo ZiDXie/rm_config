@@ -14,19 +14,19 @@ rm_manual:
       #      - [ 80.0,1.8 ]
       #      - [ 100.0,1.9 ]
       #      - [ 250.0,2.5 ]
-      - [ 50.0,2.6 ]
+      - [ 50.0,2.5 ]
     accel_y:
       - [ 60.0,3.0 ]
     accel_z:
       - [ 60.0,12.0 ]
       - [ 80.0,15.0 ]
       - [ 100.0,18.0 ]
-      - [ 250.0,22.0 ]
-    safety_power: 115
+      - [ 280.0,29.0 ]
+    safety_power: 120
     capacitor_threshold: 0.1
     charge_power: 80
     extra_power: 0
-    burst_power: 260
+    burst_power: 150
     standard_power: 85
     buffer_threshold: 10
     max_power_limit: 110
@@ -47,10 +47,10 @@ rm_manual:
     topic: "/cmd_vel"
     power_limit_topic: "/cmd_chassis"
     max_linear_x:
-      - [ 60.0,1.20 ]
-      - [ 80.0,1.30 ]
-      - [ 180.0,1.90 ]
-      - [ 280.0,2.40 ]
+      - [ 60.0,1.00 ]
+      - [ 80.0,1.10 ]
+      - [ 180.0,2.10 ]
+      - [ 260.0,2.50 ]
     max_linear_y:
       - [ 60.0,1.20 ]
       - [ 80.0,1.30 ]
@@ -79,9 +79,9 @@ rm_manual:
       timeout: 0.05
   shooter:
     topic: "/controllers/shooter_controller/command"
-    track_armor_error_tolerance: 0.08
-    untrack_armor_error_tolerance: 0.06
-    max_track_target_vel: 12.0
+    track_armor_error_tolerance: 0.07
+    untrack_armor_error_tolerance: 0.08
+    max_track_target_vel: 11.0
     track_buff_error_tolerance: 0.12
     target_acceleration_tolerance: 99.0
     speed_10m_per_speed: 23.5
@@ -89,9 +89,9 @@ rm_manual:
     speed_16m_per_speed: 23.5
     speed_18m_per_speed: 23.5
     speed_30m_per_speed: 23.5
-    wheel_speed_15: 700.0
-    wheel_speed_18: 700.0
-    wheel_speed_30: 700.0 # 715
+    wheel_speed_15: 680.0
+    wheel_speed_18: 680.0
+    wheel_speed_30: 680.0 # 715
     extra_wheel_speed_once: 5.0
     heat_limit:
       low_shoot_frequency: 10
@@ -149,9 +149,3 @@ rm_manual:
         - controllers/shooter_controller
       services_name:
         - /controllers/trigger_calibration_controller/is_calibrated
-
-#controllers:
-#  cover_controller:
-#    type: effort_controllers/JointPositionController
-#    joint: "cover_joint"
-#    pid: { p: 7.0, i: 0.0, d: 0.5, i_clamp_max: 0.0, i_clamp_min: 0.0, antiwindup: true, publish_state: true }
