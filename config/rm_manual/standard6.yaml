@@ -25,11 +25,11 @@ rm_manual:
     enable_burst_cap_threshold: 0.3
     disable_burst_cap_threshold: 0.2
     disable_normal_cap_threshold: 0.5
-    enable_gyro_cap_threshold: 0.3
-    disable_gyro_cap_threshold: 0.4
+    enable_gyro_cap_threshold: 0.4
+    disable_gyro_cap_threshold: 0.3
     extra_power: 0
     burst_power: 160
-    gyro_power: 120
+    gyro_power: 160
     max_power_limit: 220
     buffer_threshold: 10
     power_gain: 0.0
