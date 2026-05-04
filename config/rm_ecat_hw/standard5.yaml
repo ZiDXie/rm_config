@@ -2,13 +2,13 @@ ethercat_master:
   time_step: 0.001
 
 ethercat_devices:
-  - type: Rm
-    name: RmSlave1
-    configuration_file: device_configurations/standard5_rm.yaml
-    ethercat_bus: enp114s0
-    ethercat_address: 1
   - type: Mit
     name: MitSlave1
     configuration_file: device_configurations/standard5_mit.yaml
-    ethercat_bus: enp114s0
+    ethercat_bus: enp113s0
+    ethercat_address: 1
+  - type: Rm
+    name: RmSlave1
+    configuration_file: device_configurations/standard5_rm.yaml
+    ethercat_bus: enp113s0
     ethercat_address: 2

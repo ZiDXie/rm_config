@@ -72,18 +72,14 @@ controllers:
     controllers:
       yaw:
         joint: "yaw_joint"
-        pid: { p: 0.8, i: 20.0, d: 0.0, i_clamp_max: 0.25, i_clamp_min: -0.25, antiwindup: true, publish_state: true }
-        pid_pos: { p: 18.0, i: 0, d: 0.0, i_max: 0.0, i_min: 0.0, antiwindup: true, publish_state: true }
-        chassis_comp_a: 0.0035
-        chassis_comp_b: 0.21
-        chassis_comp_c: -1.2
-        chassis_comp_d: 0.035
+        pid: { p: 0.3, i: 0.7, d: 0.0, i_clamp_max: 0.25, i_clamp_min: -0.25, antiwindup: true, publish_state: true }
+        pid_pos: { p: 20, i: 0, d: 0.0, i_max: 0.0, i_min: 0.0, antiwindup: true, publish_state: true }
         k_v: 1.0
         accel: 28.0
       pitch:
         joint: "pitch_joint"
-        pid: { p: 0.5, i: 12.0, d: 0.0, i_clamp_max: 0.2, i_clamp_min: -0.2, antiwindup: true, publish_state: true }
-        pid_pos: { p: 20.0, i: 0.0, d: 0.01, i_max: 0.0, i_min: 0.0, antiwindup: true, publish_state: true }
+        pid: { p: 2.0, i: 0.7, d: 0.0, i_clamp_max: 1.0, i_clamp_min: -1.0, antiwindup: true, publish_state: true }
+        pid_pos: { p: 25.0, i: 0.0, d: 0.01, i_max: 0.0, i_min: 0.0, antiwindup: true, publish_state: true }
         k_v: 1.0
         accel: 40.0
     chassis_vel:
@@ -100,6 +96,7 @@ controllers:
       resistance_coff_qd_16: 0.001
       resistance_coff_qd_18: 0.001
       resistance_coff_qd_30: 0.001
+      resistance_coff_qd_800: 0.001
       g: 9.81
       delay: 0.04
       dt: 0.001
@@ -117,45 +114,25 @@ controllers:
       wait_next_armor_delay: 0.068
       wait_diagonal_armor_delay: 0.068
 
+  base_pitch_controller:
+    type: effort_controllers/JointPositionController
+    publish_rate: 100
+    joint: "base_pitch_joint"
+    pid: { p: 40.0, i: 0.0, d: 13.0, i_clamp_max: 0.0, i_clamp_min: 0.0, antiwindup: true, publish_state: true }
+
   base_yaw_controller:
     type: rm_gimbal_controllers/Controller
     publish_rate: 50
     imu_name: "gimbal_imu"
-    feedforward:
-      gravity: 0.0
-      enable_gravity_compensation: false
-      mass_origin: [0.0, 0.0, 0.0]
     chassis_vel:
       num_data: 20.0
       debug: true
     controllers:
       yaw:
         joint: "base_yaw_joint"
-        pid: { p: 0.8, i: 20.0, d: 0.0, i_clamp_max: 0.25, i_clamp_min: -0.25, antiwindup: true, publish_state: true }
-        pid_pos: { p: 18.0, i: 0, d: 0.0, i_max: 0.0, i_min: 0.0, antiwindup: true, publish_state: true }
-        chassis_comp_a: 0.0035
-        chassis_comp_b: 0.21
-        chassis_comp_c: -1.2
-        chassis_comp_d: 0.035
+        pid: { p: 1.0, i: 0, d: 0.0, i_clamp_max: 0.25, i_clamp_min: -0.25, antiwindup: true, publish_state: true }
+        pid_pos: { p: 10, i: 0, d: 1.0, i_max: 0.0, i_min: 0.0, antiwindup: true, publish_state: true }
         k_v: 1.0
-        accel: 28.0
-  base_pitch_controller:
-    type: rm_gimbal_controllers/Controller
-    controllers:
-      pitch:
-        joint: "base_pitch_joint"
-        pid: { p: 0.5, i: 12.0, d: 0.0, i_clamp_max: 0.2, i_clamp_min: -0.2, antiwindup: true, publish_state: true }
-        pid_pos: { p: 20.0, i: 0.0, d: 0.01, i_max: 0.0, i_min: 0.0, antiwindup: true, publish_state: true }
-        k_v: 1.0
-        accel: 40.0
-    chassis_vel:
-      num_data: 30
-      debug: true
-    imu_name: "gimbal_imu"
-    feedforward:
-      gravity: 0.0
-      enable_gravity_compensation: false
-      mass_origin: [0.0, 0.0, 0.0]
 
   shooter_controller:
     type: rm_shooter_controllers/Controller
@@ -173,7 +150,7 @@ controllers:
     trigger:
       joint: "trigger_joint"
       pid: { p: 30, i: 0.0, d: 1.0, i_clamp_max: 0.0, i_clamp_min: 0.0, antiwindup: true, publish_state: true }
-    push_per_rotation: 9
+    push_per_rotation: 8
     push_qd_threshold: 0.90
     block_effort: 4.0
     block_speed: 0.1

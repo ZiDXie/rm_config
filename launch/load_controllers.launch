@@ -32,6 +32,8 @@
           controllers/leg_lb_calibration_controller
           controllers/leg_rf_calibration_controller
           controllers/leg_rb_calibration_controller
+          controllers/base_yaw_controller
+          controllers/base_pitch_controller
           "/>
 
     <group if="$(arg balance)">

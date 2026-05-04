@@ -8,10 +8,7 @@ rm_manual:
   chassis:
     topic: "/cmd_chassis"
     accel_x:
-      - [ 50.0,2.1 ]
-      - [ 80.0,2.1 ]
-      - [ 100.0,3.0 ]
-      - [ 220.0,3.0 ]
+      - [ 50.0,99.0 ]
     accel_y:
       - [ 50.0,99.0 ]
     accel_z:
@@ -89,20 +86,6 @@ rm_manual:
       timeout: 0.05
   base_pitch:
     topic: "/controllers/base_pitch_controller/command"
-    max_pitch_vel: 5.0
-    time_constant_rc: 0.02
-    time_constant_pc: 0.08
-    gimbal_scale: 10.0
-    track_timeout: 0.5
-    eject_sensitivity: 0.5
-    finish_turning_threshold: 2.9
-    pass_hole_angle: 0.1286
-    target_cost_function:
-      k_pos: 1.0
-      k_vel: 1.0
-      k_hp: 1.0
-      k_freq: 1.0
-      timeout: 0.05
   shooter:
     topic: "/controllers/shooter_controller/command"
     track_armor_error_tolerance: 0.08
@@ -115,9 +98,9 @@ rm_manual:
     speed_16m_per_speed: 23.5
     speed_18m_per_speed: 23.5
     speed_30m_per_speed: 23.5
-    wheel_speed_15: 625.0
-    wheel_speed_18: 625.0
-    wheel_speed_30: 625.0
+    wheel_speed_15: 700.0
+    wheel_speed_18: 700.0
+    wheel_speed_30: 700.0
     wheel_speed_gain: 0.5
     extra_wheel_speed_once: 5.0
     speed_oscillation: 1.0
