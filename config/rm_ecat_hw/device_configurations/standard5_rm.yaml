@@ -19,10 +19,10 @@ can_motors:
     can_bus: 1
     name: "yaw_joint_motor"
     type: "GM6020"
-  - can_id: 4
+  - can_id: 3
     can_bus: 1
     name: "trigger_joint_motor"
-    type: "M3508"
+    type: "M2006"
     need_calibration: true
   - can_id: 2
     can_bus: 1

@@ -9,15 +9,15 @@ rm_manual:
   chassis:
     topic: "/cmd_chassis"
     accel_x:
-      - [ 50.0,12.0 ]
-      - [ 80.0,12.0 ]
-      - [ 100.0,14.0 ]
-      - [ 220.0,99.9 ]
+      - [ 50.0,14.0 ]
+      - [ 80.0,17.0 ]
+      - [ 100.0,19.0 ]
+      - [ 160.0,22.0 ]
     accel_y:
-      - [ 50.0,12.0 ]
-      - [ 80.0,12.0 ]
-      - [ 100.0,14.0 ]
-      - [ 220.0,99.0 ]
+      - [ 50.0,14.0 ]
+      - [ 80.0,17.0 ]
+      - [ 100.0,19.0 ]
+      - [ 160.0,22.0 ]
     accel_z:
       - [ 50.0,50.0 ]
     safety_power: 50
@@ -29,8 +29,8 @@ rm_manual:
     disable_gyro_cap_threshold: 0.3
     extra_power: 0
     burst_power: 160
-    gyro_power: 160
-    max_power_limit: 220
+    gyro_power: 120
+    max_power_limit: 160
     buffer_threshold: 10
     power_gain: 0.0
     total_burst_time: 20
@@ -38,20 +38,21 @@ rm_manual:
     topic: "/cmd_vel"
     power_limit_topic: "/cmd_chassis"
     max_linear_x:
-      - [ 50.0,1.5 ]
-      - [ 80.0,1.8 ]
-      - [ 100.0,2.2 ]
-      - [ 220.0,4.0 ]
+      - [ 50.0,2.0 ]
+      - [ 80.0,2.5 ]
+      - [ 100.0,2.8 ]
+      - [ 160.0,3.2 ]
     max_linear_y:
-      - [ 50.0,1.5 ]
-      - [ 80.0,1.8 ]
-      - [ 100.0,2.2 ]
-      - [ 220.0,4.0 ]
+      - [ 50.0,2.0 ]
+      - [ 80.0,2.5 ]
+      - [ 100.0,2.8 ]
+      - [ 160.0,3.2 ]
     max_angular_z:
-      - [ 50.0,6.0 ]
-      - [ 80.0,7.7 ]
-      - [ 100.0,9.0 ]
-      - [ 160.0,14.0 ]
+      - [ 50.0,8.0 ]
+      - [ 80.0,8.6 ]
+      - [ 100.0,12.0 ]
+      - [ 120.0,13.0 ]
+      - [ 160.0,15.0 ]
     gyro_move_reduction: 0.7
     gyro_rotate_reduction: 0.3
     sin_gyro_base_scale: 0.9

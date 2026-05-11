@@ -13,17 +13,17 @@ rm_manual:
       - [ 50.0,99.0 ]
     accel_z:
       - [ 50.0,99.0 ]
-    safety_power: 75
+    safety_power: 50
     capacitor_threshold: 0.2
     enable_burst_cap_threshold: 0.3
     disable_burst_cap_threshold: 0.2
-    disable_normal_cap_threshold: 0.8
-    enable_gyro_cap_threshold: 0.6
-    disable_gyro_cap_threshold: 0.5
+    disable_normal_cap_threshold: 0.5
+    enable_gyro_cap_threshold: 0.5
+    disable_gyro_cap_threshold: 0.4
     extra_power: 0
-    burst_power: 220
-    gyro_power: 160
-    max_power_limit: 220
+    burst_power: 150
+    gyro_power: 120
+    max_power_limit: 150
     buffer_threshold: 10
     power_gain: 0.0
     total_burst_time: 20
@@ -31,22 +31,22 @@ rm_manual:
     topic: "/cmd_vel"
     power_limit_topic: "/cmd_chassis"
     max_linear_x:
-      - [ 50.0,2.1 ]
-      - [ 80.0,2.8 ]
-      - [ 100.0,3.2 ]
-      - [ 220.0,5.2 ]
+      - [ 50.0,2.2 ]
+      - [ 80.0,3.4 ]
+      - [ 100.0,4.2 ]
+      - [ 150.0,5.0 ]
     max_linear_y:
-      - [ 50.0,2.1 ]
-      - [ 80.0,2.8 ]
-      - [ 100.0,3.2 ]
-      - [ 220.0,5.2 ]
+      - [ 50.0,2.2 ]
+      - [ 80.0,3.4 ]
+      - [ 100.0,4.2 ]
+      - [ 150.0,5.0 ]
     max_angular_z:
-      - [ 50.0,12.0 ]
-      - [ 80.0,15.0 ]
-      - [ 100.0,18.0 ]
-      - [ 220.0,20.0 ]
-    gyro_move_reduction: 0.9
-    gyro_rotate_reduction: 0.25
+      - [ 50.0,22.0]
+      - [ 80.0,14.0 ]
+      - [ 100.0,16.0 ]
+      - [ 220.0,22.0 ]
+    gyro_move_reduction: 0.8
+    gyro_rotate_reduction: 0.5
     sin_gyro_base_scale: 0.9
     sin_gyro_amplitude: 0.1
     sin_gyro_period: 1.5
@@ -86,10 +86,11 @@ rm_manual:
       timeout: 0.05
   base_pitch:
     topic: "/controllers/base_pitch_controller/command"
+    zipped_pitch_rate_pid: {p: 4.0}
   shooter:
     topic: "/controllers/shooter_controller/command"
-    track_armor_error_tolerance: 0.08
-    untrack_armor_error_tolerance: 0.10
+    track_armor_error_tolerance: 0.07
+    untrack_armor_error_tolerance: 0.08
     track_buff_error_tolerance: 0.10
     max_track_target_vel: 10.0
     target_acceleration_tolerance: 99.
@@ -106,13 +107,14 @@ rm_manual:
     speed_oscillation: 1.0
     auto_wheel_speed: false
     heat_limit:
-      low_shoot_frequency: 20.0
-      high_shoot_frequency: 20.0
-      burst_shoot_frequency: 20.0
+      low_shoot_frequency: 5.0
+      high_shoot_frequency: 5.0
+      burst_shoot_frequency: 5.0
       minimal_shoot_frequency: 1.25
-      safe_shoot_frequency: 3
-      heat_coeff: 20.0
+      safe_shoot_frequency: 10.0
+      heat_coeff: 4.0
       use_local_heat_: true
+      local_heat_protect_threshold: 30
       type: "ID1_17MM"
   buff_switch:
     fail_limit: 10
