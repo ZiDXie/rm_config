@@ -16,14 +16,14 @@ rm_manual:
     safety_power: 50
     capacitor_threshold: 0.2
     enable_burst_cap_threshold: 0.3
-    disable_burst_cap_threshold: 0.2
-    disable_normal_cap_threshold: 0.5
+    disable_burst_cap_threshold: 0.25
+    disable_normal_cap_threshold: 0.6
     enable_gyro_cap_threshold: 0.5
     disable_gyro_cap_threshold: 0.4
-    extra_power: 0
+    extra_power: 15
     burst_power: 150
     gyro_power: 120
-    max_power_limit: 150
+    max_power_limit: 200
     buffer_threshold: 10
     power_gain: 0.0
     total_burst_time: 20
@@ -41,14 +41,14 @@ rm_manual:
       - [ 100.0,4.2 ]
       - [ 150.0,5.0 ]
     max_angular_z:
-      - [ 50.0,22.0]
+      - [ 50.0,10.0]
       - [ 80.0,14.0 ]
-      - [ 100.0,16.0 ]
-      - [ 220.0,22.0 ]
+      - [ 100.0,14.0 ]
+      - [ 220.0,14.0 ]
     gyro_move_reduction: 0.8
     gyro_rotate_reduction: 0.5
-    sin_gyro_base_scale: 0.9
-    sin_gyro_amplitude: 0.1
+    sin_gyro_base_scale: 1.0
+    sin_gyro_amplitude: 0.0
     sin_gyro_period: 1.5
     sin_gyro_phase: 0.0
   gimbal:
@@ -99,22 +99,22 @@ rm_manual:
     speed_16m_per_speed: 23.5
     speed_18m_per_speed: 23.5
     speed_30m_per_speed: 23.5
-    wheel_speed_15: 700.0
-    wheel_speed_18: 700.0
-    wheel_speed_30: 700.0
+    wheel_speed_15: 690.0
+    wheel_speed_18: 690.0
+    wheel_speed_30: 690.0
     wheel_speed_gain: 0.5
     extra_wheel_speed_once: 5.0
     speed_oscillation: 1.0
     auto_wheel_speed: false
     heat_limit:
-      low_shoot_frequency: 5.0
-      high_shoot_frequency: 5.0
-      burst_shoot_frequency: 5.0
+      low_shoot_frequency: 10.0
+      high_shoot_frequency: 10.0
+      burst_shoot_frequency: 10.0
       minimal_shoot_frequency: 1.25
-      safe_shoot_frequency: 10.0
+      safe_shoot_frequency: 3.0
       heat_coeff: 4.0
       use_local_heat_: true
-      local_heat_protect_threshold: 30
+      local_heat_protect_threshold: 40
       type: "ID1_17MM"
   buff_switch:
     fail_limit: 10
