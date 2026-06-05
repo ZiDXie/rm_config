@@ -35,6 +35,7 @@ rm_manual:
       short_leg_length: 0.15
       mid_leg_length: 0.21
       high_leg_length: 0.348
+      jump_up_range_threshold: 0.9
   vel:
     topic: "/cmd_vel"
     power_limit_topic: "/cmd_chassis"

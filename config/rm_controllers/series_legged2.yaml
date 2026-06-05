@@ -152,11 +152,11 @@ controllers:
     spring_s2: 0.0486
     spring_s3: 0.20
     spring_alpha_s: 0.2448
-    #    gravity_force: 110
-    #    spring_force: 250
+    gravity_force: 110
+    spring_force: 250
     # use in gazebo
-    gravity_force: 70
-    spring_force: 0
+    #    gravity_force: 70
+    #    spring_force: 0
     default_leg_length: 0.12
 
     unstick_threshold: 5
@@ -236,11 +236,11 @@ controllers:
     behind_lower_threshold: -0.8
     # behind_upper_threshold: M_PI - 0.5
     behind_upper_threshold: 2.6416
-    upstair_des_theta: 1.15
+    upstair_des_theta: 1.1
     #    upstair_des_length: 0.34
     upstair_des_length: 0.14
     upstair_exit_theta_threshold: 1.0
-    upstair_exit_length_threshold: 0.18
+    upstair_exit_length_threshold: 0.24
     # upstair_des_theta: M_PI_2 - 0.6
     arrive_time_threshold: 1.5
     jumpOverTime: 2.0
