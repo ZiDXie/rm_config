@@ -28,7 +28,7 @@ controllers:
         accel: 28.0
       pitch:
         joint: "pitch_joint"
-        pid: { p: 0.5, i: 15.0, d: 0.0, i_clamp_max: 0.15, i_clamp_min: -0.15, antiwindup: true, publish_state: true }
+        pid: { p: 0.6, i: 15.0, d: 0.0, i_clamp_max: 0.15, i_clamp_min: -0.15, antiwindup: true, publish_state: true }
         pid_pos: { p: 23.0, i: 0, d: 0.0, i_max: 0.0, i_min: 0.0, antiwindup: true, publish_state: true }
         k_v: 1.0
         accel: 40.0
@@ -48,9 +48,7 @@ controllers:
       resistance_coff_qd_18: 0.001
       resistance_coff_qd_30: 0.001
       g: 9.81
-      delay: 0.008
-      wait_next_armor_delay: 0.0
-      wait_diagonal_armor_delay: 0.0
+      delay: 0.01
       dt: 0.001
       timeout: 0.5
       publish_rate: 50
@@ -58,14 +56,15 @@ controllers:
       min_switch_angle: 2
       ban_shoot_duration: 0.035
       gimbal_switch_duration: 0.09
-      max_track_target_vel: 13.5
-      switch_hysteresis: 1.2
+      max_track_target_vel: 11.0
+      switch_hysteresis: 1.0
       max_chassis_angular_vel: 12.0
-      track_rotate_target_delay: 0.0
-      track_move_target_delay: 0.06
+      track_rotate_target_delay: -0.015
+      track_move_target_delay: 0.05
       switch_angle_offset: 0.9
-      traject_ahead_: 0.7
-      center_delay: -0.012
+      traject_ahead_: 1.15
+      center_delay: 0.11
+      yaw_max_acc: 60.0
 
   gimbal_calibration_controller:
     type: rm_calibration_controllers/MechanicalCalibrationController
@@ -129,36 +128,44 @@ controllers:
     twist_angular: 0.5233
     max_odom_vel: 10.0
     timeout: 0.1
-    pid_follow: { p: 2.2, i: 0, d: 0.5, i_max: 0.0, i_min: 0.0, antiwindup: true, publish_state: true }
+    pid_follow: { p: 2.2, i: 0, d: 0.6, i_max: 0.0, i_min: 0.0, antiwindup: true, publish_state: true }
     pid_block_error: { p: 0, i: 0, d: 0.0, i_max: 0.0, i_min: 0.0, antiwindup: true, publish_state: true }
     twist_covariance_diagonal: [ 0.001, 0.001, 0.001, 0.001, 0.001, 0.001 ]
 
     # BipedalController
-    pid_left_leg: { p: 1300.0, i: 100., d: 70, i_clamp_max: 20.0, i_clamp_min: -20.0, antiwindup: true, publish_state: true }
-    pid_right_leg: { p: 1300.0, i: 100., d: 70, i_clamp_max: 20.0, i_clamp_min: -20.0, antiwindup: true, publish_state: true }
+    pid_left_leg: { p: 800.0, i: 100., d: 30, i_clamp_max: 20.0, i_clamp_min: -20.0, antiwindup: true, publish_state: true }
+    pid_right_leg: { p: 800.0, i: 100., d: 30, i_clamp_max: 20.0, i_clamp_min: -20.0, antiwindup: true, publish_state: true }
     #    pid_left_leg: { p: 900.0, i: 200., d: 40, i_clamp_max: 30.0, i_clamp_min: -30.0, antiwindup: true, publish_state: true }
     #    pid_right_leg: { p: 900.0, i: 200., d: 40, i_clamp_max: 30.0, i_clamp_min: -30.0, antiwindup: true, publish_state: true }
-    pid_theta_diff: { p: 300.0, i: 0.0, d: 5.0, i_max: 0.0, i_min: 0.0, antiwindup: true, publish_state: true }
+    pid_theta_diff: { p: 400.0, i: 0.0, d: 2.5, i_max: 0.0, i_min: 0.0, antiwindup: true, publish_state: true }
     #    pid_roll: { p: 1600.0, i: 0, d: 40., i_clamp_max: 30.0, i_clamp_min: -30.0, antiwindup: true, publish_state: true }
-    pid_roll: { p: 1000.0, i: 0, d: 30., i_clamp_max: 30.0, i_clamp_min: -30.0, antiwindup: true, publish_state: true }
+    pid_roll: { p: 1200.0, i: 0, d: 30., i_clamp_max: 30.0, i_clamp_min: -30.0, antiwindup: true, publish_state: true }
     #    pid_yaw_pos: { p: 2.0, i: 1.0, d: 0.0, i_clamp_max: 3.0, i_clamp_min: 3.0, antiwindup: true, publish_state: true }
     pid_yaw_pos: { p: 0.0, i: 0.0, d: 0.0, i_clamp_max: 3.0, i_clamp_min: 3.0, antiwindup: true, publish_state: true }
-    pid_yaw_vel: { p: 0.55, i: 2.0, d: 0., i_clamp_max: 1.5, i_clamp_min: -1.5, antiwindup: true, publish_state: true }
-    pid_left_leg_theta: { p: 40.0, i: 0., d: 2.2., i_clamp_max: 2.0, i_clamp_min: -2.0, antiwindup: true, publish_state: true }
-    pid_right_leg_theta: { p: 40.0, i: 0., d: 2.2., i_clamp_max: 2.0, i_clamp_min: -2.0, antiwindup: true, publish_state: true }
+    pid_yaw_vel: { p: 0.55, i: 2.2, d: 0., i_clamp_max: 1.5, i_clamp_min: -1.5, antiwindup: true, publish_state: true }
+    pid_left_leg_theta: { p: 50.0, i: 0., d: 2.0, i_clamp_max: 2.0, i_clamp_min: -2.0, antiwindup: true, publish_state: true }
+    pid_right_leg_theta: { p: 50.0, i: 0., d: 2.0, i_clamp_max: 2.0, i_clamp_min: -2.0, antiwindup: true, publish_state: true }
     pid_left_leg_theta_vel: { p: 6.0, i: 3.0, d: 0., i_clamp_max: 10.0, i_clamp_min: -10.0, antiwindup: true, publish_state: true }
     pid_right_leg_theta_vel: { p: 6.0, i: 3.0, d: 0., i_clamp_max: 10.0, i_clamp_min: -10.0, antiwindup: true, publish_state: true }
     pid_left_wheel_vel: { p: 0.0, i: 0.0, d: 0.0, i_clamp_max: 0.1, i_clamp_min: -0.1, antiwindup: true, publish_state: true }
     pid_right_wheel_vel: { p: 0.0, i: 0.0, d: 0.0, i_clamp_max: 0.1, i_clamp_min: -0.1, antiwindup: true, publish_state: true }
-    pid_left_leg_stand_up: { p: 850.0, i: 0.0, d: 40.0, i_clamp_max: 20.0, i_clamp_min: -20.0, antiwindup: true, publish_state: true }
-    pid_right_leg_stand_up: { p: 850.0, i: 0.0, d: 40.0, i_clamp_max: 20.0, i_clamp_min: -20.0, antiwindup: true, publish_state: true }
+    pid_left_leg_stand_up: { p: 900.0, i: 0.0, d: 20.0, i_clamp_max: 20.0, i_clamp_min: -20.0, antiwindup: true, publish_state: true }
+    pid_right_leg_stand_up: { p: 900.0, i: 0.0, d: 20.0, i_clamp_max: 20.0, i_clamp_min: -20.0, antiwindup: true, publish_state: true }
     #    pid_left_leg_stand_up: { p: 900.0, i: 0.0, d: 50.0, i_clamp_max: 20.0, i_clamp_min: -20.0, antiwindup: true, publish_state: true }
     #    pid_right_leg_stand_up: { p: 900.0, i: 0.0, d: 50.0, i_clamp_max: 20.0, i_clamp_min: -20.0, antiwindup: true, publish_state: true }
 
-    gravity_force: 160
-    spring_force: 120
+    gravity_force: 140
+    spring_force: 120.0
+    #    unstick_threshold: 20
+    #    spring_force: 200.0
+    spring_s2: 0.0775
+    spring_s3: 0.205
+    spring_alpha_s: 0.2
+    # gazebo
+    #    gravity_force: 60
     #    spring_force: 0
     default_leg_length: 0.2
+    unstick_threshold: -20
 
     # VMC config
     l1: 0.218
@@ -188,9 +195,13 @@ controllers:
     g: 9.81
     # 轮子半径
     wheel_radius: 0.06
+    # 轮距
+    wheel_track: 0.42
+    # 底盘高度
+    chassis_high: 0.12
 
-      #    q: [ 100.0, 1, 500.0, 100, 7025.0, 1 ]
-      #    r: [ 25, 2.0 ]
+    #    q: [ 100.0, 1, 500.0, 100, 7025.0, 1 ]
+    #    r: [ 25, 2.0 ]
 
     #    # old
     #    # theta d_theta x dx phi d_phi
@@ -201,19 +212,22 @@ controllers:
 
 
     # new
-    #    q: [ 3250.0, 1, 3500.0, 50, 10000.0, 1 ]
+    #    q: [ 4250.0, 1, 3500.0, 50, 10000.0, 1 ]
     #    r: [ 100, 5 ]
 
-    q: [ 5000.0, 1, 4000.0, 10, 20000.0, 1 ]
-    r: [ 75, 5 ]
+    #    q: [ 6000.0, 1, 4500.0, 50, 20000.0, 1 ]
+    #    r: [ 80, 5 ]
 
     #    q: [ 15000.0, 1, 6000.0, 100, 80000.0, 1 ]
     #    r: [ 100, 5 ]
 
+    q: [ 10250.0, 1, 5500.0, 50, 50000.0, 1 ]
+    r: [ 100, 10 ]
+
 
     #    x_bias: 0.01
-    x_bias: 0.03
-    theta_bias: 0.0
+    x_bias: 0.0
+    theta_bias: 0.04
     pitch_bias: -0.0
     roll_bias: 0.
     raw_pitch_bias: 0.
@@ -231,10 +245,13 @@ controllers:
     behind_lower_threshold: 0.1708
     # behind_upper_threshold: M_PI - 0.5
     behind_upper_threshold: 2.6416
-    # upstair_exit_threshold: M_PI_2 - 0.65
+    # upstair_exit_theta_threshold: M_PI_2 - 0.65
     upstair_exit_threshold: 0.9208
+    upstair_exit_theta_threshold: 0.9208
+    upstair_exit_length_threshold: 0.22
     # upstair_des_theta: M_PI_2 - 0.6
     upstair_des_theta: 0.9708
+    upstair_des_length: 0.34
 
     jumpOverTime: 2.0
     p1: -241100
