@@ -22,7 +22,7 @@ rm_manual:
     disable_gyro_cap_threshold: 0.4
     extra_power: 15
     burst_power: 150
-    gyro_power: 120
+    gyro_power: 150
     max_power_limit: 200
     buffer_threshold: 10
     power_gain: 0.0
