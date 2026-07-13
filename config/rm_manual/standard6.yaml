@@ -3,34 +3,26 @@ rm_manual:
   dbus_topic: "/rm_ecat_hw/dbus"
   chassis_calibrate_motor: [ ]
   gimbal_calibrate_motor: [ ]
-  chassis_motor: [ "right_front_wheel_motor", "left_front_wheel_motor", "left_back_wheel_motor", "right_back_wheel_motor" ]
   shooter_calibrate_motor: [ "trigger_joint_motor" ]
   buff_gyro_rotate_limit: 6.0
   chassis:
     topic: "/cmd_chassis"
     accel_x:
-      - [ 50.0,14.0 ]
-      - [ 80.0,17.0 ]
-      - [ 100.0,19.0 ]
-      - [ 160.0,22.0 ]
+      - [ 50.0,99.0 ]
     accel_y:
-      - [ 50.0,14.0 ]
-      - [ 80.0,17.0 ]
-      - [ 100.0,19.0 ]
-      - [ 160.0,22.0 ]
+      - [ 50.0,99.0 ]
     accel_z:
-      - [ 50.0,50.0 ]
+      - [ 50.0,99.0 ]
     safety_power: 50
-    capacitor_threshold: 0.2
+    capacitor_threshold: 0.1
     enable_burst_cap_threshold: 0.3
-    disable_burst_cap_threshold: 0.2
-    disable_normal_cap_threshold: 0.5
-    enable_gyro_cap_threshold: 0.4
-    disable_gyro_cap_threshold: 0.3
-    extra_power: 0
-    burst_power: 160
-    gyro_power: 120
-    max_power_limit: 160
+    disable_burst_cap_threshold: 0.1
+    disable_normal_cap_threshold: 0.6
+    enable_gyro_cap_threshold: 0.3
+    disable_gyro_cap_threshold: 0.15
+    extra_power: 15
+    burst_power: 150
+    gyro_power: 150
     buffer_threshold: 10
     power_gain: 0.0
     total_burst_time: 20
@@ -38,34 +30,33 @@ rm_manual:
     topic: "/cmd_vel"
     power_limit_topic: "/cmd_chassis"
     max_linear_x:
-      - [ 50.0,2.0 ]
-      - [ 80.0,2.5 ]
-      - [ 100.0,2.8 ]
-      - [ 160.0,3.2 ]
+      - [ 50.0,2.3 ]
+      - [ 80.0,3.4 ]
+      - [ 100.0,4.3 ]
+      - [ 150.0,4.8 ]
     max_linear_y:
-      - [ 50.0,2.0 ]
-      - [ 80.0,2.5 ]
-      - [ 100.0,2.8 ]
-      - [ 160.0,3.2 ]
+      - [ 50.0,2.3 ]
+      - [ 80.0,3.4 ]
+      - [ 100.0,4.3 ]
+      - [ 150.0,4.8 ]
     max_angular_z:
-      - [ 50.0,8.0 ]
-      - [ 80.0,8.6 ]
-      - [ 100.0,12.0 ]
-      - [ 120.0,13.0 ]
-      - [ 160.0,15.0 ]
-    gyro_move_reduction: 0.7
-    gyro_rotate_reduction: 0.3
-    sin_gyro_base_scale: 0.9
-    sin_gyro_amplitude: 0.1
+      - [ 50.0,7.7]
+      - [ 80.0,12.0 ]
+      - [ 100.0,14.0 ]
+      - [ 220.0,14.0 ]
+    gyro_move_reduction: 1.0
+    gyro_rotate_reduction: 1.0
+    sin_gyro_base_scale: 1.0
+    sin_gyro_amplitude: 0.0
     sin_gyro_period: 1.5
     sin_gyro_phase: 0.0
   gimbal:
     topic: "/controllers/gimbal_controller/command"
-    max_yaw_vel: 4.2
+    max_yaw_vel: 6.28
     max_pitch_vel: 5.0
     time_constant_rc: 0.02
     time_constant_pc: 0.08
-    gimbal_scale: 15.0
+    gimbal_scale: 10.0
     track_timeout: 0.5
     eject_sensitivity: 0.5
     finish_turning_threshold: 2.9
@@ -76,34 +67,37 @@ rm_manual:
       k_hp: 1.0
       k_freq: 1.0
       timeout: 0.05
+  base_pitch:
+    topic: "/controllers/base_pitch_controller/command"
+    zipped_pitch_rate_pid: {p: 4.0}
   shooter:
     topic: "/controllers/shooter_controller/command"
     track_armor_error_tolerance: 0.07
-    untrack_armor_error_tolerance: 0.07
-    track_buff_error_tolerance: 0.12
-    max_track_target_vel: 9.0
-    target_acceleration_tolerance: 99.0
+    untrack_armor_error_tolerance: 0.06
+    track_buff_error_tolerance: 0.10
+    max_track_target_vel: 10.0
+    target_acceleration_tolerance: 99.
     speed_10m_per_speed: 23.5
     speed_15m_per_speed: 23.5
     speed_16m_per_speed: 23.5
     speed_18m_per_speed: 23.5
     speed_30m_per_speed: 23.5
-    wheel_speed_15: 675.0
-    wheel_speed_18: 675.0
-    wheel_speed_30: 675.0
+    wheel_speed_15: 700.0
+    wheel_speed_18: 700.0
+    wheel_speed_30: 700.0
     wheel_speed_gain: 0.5
     extra_wheel_speed_once: 5.0
-    speed_oscillation: 0.5
+    speed_oscillation: 1.0
     auto_wheel_speed: false
     heat_limit:
-      low_shoot_frequency: 10
-      high_shoot_frequency: 10
-      burst_shoot_frequency: 10
-      minimal_shoot_frequency: 1.75
-      safe_shoot_frequency: 3
-      heat_coeff: 4.0
-      use_local_heat: true
-      local_heat_protect_threshold: 30
+      low_shoot_frequency: 17.0
+      high_shoot_frequency: 17.0
+      burst_shoot_frequency: 17.0
+      minimal_shoot_frequency: 1.25
+      safe_shoot_frequency: 3.0
+      heat_coeff: 15.0
+      use_local_heat_: true
+      local_heat_protect_threshold: 40
       type: "ID1_17MM"
   buff_switch:
     fail_limit: 10
@@ -116,7 +110,7 @@ rm_manual:
     service_name: "/Processor/status_change"
   exposure_switch:
     fail_limit: 10
-    service_name: "/exposure_status_switch"
+    service_name: "/hk_camera/exposure_status_switch"
 
   controllers_list:
     state_controllers:
@@ -127,6 +121,7 @@ rm_manual:
       - controllers/orientation_controller
       - controllers/gimbal_controller
       - controllers/shooter_controller
+      - controllers/base_pitch_controller
     calibration_controllers:
       - controllers/trigger_calibration_controller
 

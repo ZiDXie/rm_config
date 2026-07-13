@@ -80,8 +80,8 @@ controllers:
     controllers:
       base_yaw:
         joint: "base_yaw_joint"
-        pid: { p: 1.2, i: 1.0, d: 0.0, i_clamp_max: 2.0, i_clamp_min: -2.0, antiwindup: true, publish_state: true }
-        pid_pos: { p: 20.0, i: 0, d: 1., i_max: 0.0, i_min: 0.0, antiwindup: true, publish_state: true }
+        pid: { p: 0.8, i: 1.0, d: 0.0, i_clamp_max: 2.0, i_clamp_min: -2.0, antiwindup: true, publish_state: true }
+        pid_pos: { p: 20.0, i: 0, d: 0.8, i_max: 0.0, i_min: 0.0, antiwindup: true, publish_state: true }
       yaw:
         joint: "yaw_joint"
         pid: { p: 0.3, i: 8., d: 0.0, i_clamp_max: 0.15, i_clamp_min: -0.15, antiwindup: true, publish_state: true }
@@ -150,7 +150,7 @@ controllers:
       pid: { p: 30, i: 0.0, d: 0.5, i_clamp_max: 0.0, i_clamp_min: 0.0, antiwindup: true, publish_state: true }
     push_per_rotation: 8
     push_qd_threshold: 0.90
-    block_effort: 2.5
+    block_effort: 2.8
     block_speed: 0.1
     block_duration: 0.1
     block_overtime: 0.5

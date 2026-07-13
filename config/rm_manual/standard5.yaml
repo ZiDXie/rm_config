@@ -14,16 +14,15 @@ rm_manual:
     accel_z:
       - [ 50.0,99.0 ]
     safety_power: 50
-    capacitor_threshold: 0.2
+    capacitor_threshold: 0.1
     enable_burst_cap_threshold: 0.3
-    disable_burst_cap_threshold: 0.25
+    disable_burst_cap_threshold: 0.1
     disable_normal_cap_threshold: 0.6
-    enable_gyro_cap_threshold: 0.5
-    disable_gyro_cap_threshold: 0.4
+    enable_gyro_cap_threshold: 0.3
+    disable_gyro_cap_threshold: 0.15
     extra_power: 15
     burst_power: 150
     gyro_power: 150
-    max_power_limit: 200
     buffer_threshold: 10
     power_gain: 0.0
     total_burst_time: 20
@@ -31,18 +30,18 @@ rm_manual:
     topic: "/cmd_vel"
     power_limit_topic: "/cmd_chassis"
     max_linear_x:
-      - [ 50.0,2.2 ]
+      - [ 50.0,2.3 ]
       - [ 80.0,3.4 ]
-      - [ 100.0,4.2 ]
-      - [ 150.0,5.0 ]
+      - [ 100.0,4.3 ]
+      - [ 150.0,4.8 ]
     max_linear_y:
-      - [ 50.0,2.2 ]
+      - [ 50.0,2.3 ]
       - [ 80.0,3.4 ]
-      - [ 100.0,4.2 ]
-      - [ 150.0,5.0 ]
+      - [ 100.0,4.3 ]
+      - [ 150.0,4.8 ]
     max_angular_z:
-      - [ 50.0,10.0]
-      - [ 80.0,14.0 ]
+      - [ 50.0,7.7]
+      - [ 80.0,12.0 ]
       - [ 100.0,14.0 ]
       - [ 220.0,14.0 ]
     gyro_move_reduction: 1.0
@@ -111,7 +110,7 @@ rm_manual:
     service_name: "/Processor/status_change"
   exposure_switch:
     fail_limit: 10
-    service_name: "/exposure_status_switch"
+    service_name: "/hk_camera/exposure_status_switch"
 
   controllers_list:
     state_controllers:
