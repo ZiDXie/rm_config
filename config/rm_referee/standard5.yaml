@@ -18,7 +18,7 @@ rm_referee:
       - name: "target"
         config: { start_position: [ 100, 700 ], size: 15, width: 2, title: "target: " }
       - name: "target_view_angle"
-        config: { type: "rectangle", start_position: [ 500, 240 ], end_position: [ 1420,840 ], width: 3 }
+        config: { type: "rectangle", start_position: [ 725, 770 ], end_position: [ 1300,360], width: 3 }
       - name: "zip"
         config: { type: "rectangle", start_position: [ 980, 220 ], end_position: [ 1040, 240 ], width: 2, color: "cyan" }
       - name: "gyro"
@@ -55,10 +55,10 @@ rm_referee:
         config: { type: "line", width: 2, color: "cyan",
                   start_position: [ 1020, 400 ], end_position: [ 1150, 0 ] }
       - name: "fixed_lane_line_2"
-        config: { type: "line", width: 2, color: "cyan",
+        config: { type: "line", width: 6, color: "cyan",
                   start_position: [ 830, 400 ], end_position: [ 430, 0 ] }
       - name: "fixed_lane_line_3"
-        config: { type: "line", width: 2, color: "cyan",
+        config: { type: "line", width: 6, color: "cyan",
                   start_position: [ 1240, 400 ], end_position: [ 1890, 0 ] }
     flash:
       - name: "burst"

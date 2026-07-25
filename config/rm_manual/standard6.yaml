@@ -46,9 +46,9 @@ rm_manual:
       - [ 220.0,14.0 ]
     gyro_move_reduction: 1.0
     gyro_rotate_reduction: 1.0
-    sin_gyro_base_scale: 1.0
-    sin_gyro_amplitude: 0.0
-    sin_gyro_period: 1.5
+    sin_gyro_base_scale: 0.8
+    sin_gyro_amplitude: 0.2
+    sin_gyro_period: 0.6
     sin_gyro_phase: 0.0
   gimbal:
     topic: "/controllers/gimbal_controller/command"
@@ -69,7 +69,7 @@ rm_manual:
       timeout: 0.05
   base_pitch:
     topic: "/controllers/base_pitch_controller/command"
-    zipped_pitch_rate_pid: {p: 4.0}
+    zipped_pitch_rate_pid: {p: 6.0}
   shooter:
     topic: "/controllers/shooter_controller/command"
     track_armor_error_tolerance: 0.07

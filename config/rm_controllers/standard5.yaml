@@ -29,9 +29,9 @@ controllers:
     publish_map_tf: false
     publish_odom_tf: true
     power:
-      effort_coeff: 3.2
-      vel_coeff: 0.2
-      power_offset: 5.0
+      effort_coeff: 3.5
+      vel_coeff: 0.2  #0.2
+      power_offset: 5.2
       use_rls: true
       use_K_angle: true
     raw_yaw_feedforward_k: -0.015
@@ -84,8 +84,8 @@ controllers:
         pid_pos: { p: 20.0, i: 0, d: 0.8, i_max: 0.0, i_min: 0.0, antiwindup: true, publish_state: true }
       yaw:
         joint: "yaw_joint"
-        pid: { p: 0.3, i: 8., d: 0.0, i_clamp_max: 0.15, i_clamp_min: -0.15, antiwindup: true, publish_state: true }
-        pid_pos: { p: 8., i: 0, d: 0.0, i_max: 0.0, i_min: 0.0, antiwindup: true, publish_state: true }
+        pid: { p: 0.4, i: 8., d: 0.0, i_clamp_max: 0.1, i_clamp_min: -0.1, antiwindup: true, publish_state: true }
+        pid_pos: { p: 12., i: 0, d: 0.0, i_max: 0.0, i_min: 0.0, antiwindup: true, publish_state: true }
         k_v: 1.0
         accel: 28.0
       pitch:
@@ -130,7 +130,7 @@ controllers:
     type: effort_controllers/JointPositionController
     publish_rate: 100
     joint: "base_pitch_joint"
-    pid: { p: 40.0, i: 0.0, d: 13.0, i_clamp_max: 0.0, i_clamp_min: 0.0, antiwindup: true, publish_state: true }
+    pid: { p: 55.0, i: 0.0, d: 10.0, i_clamp_max: 0.0, i_clamp_min: 0.0, antiwindup: true, publish_state: true }
 
   shooter_controller:
     type: rm_shooter_controllers/Controller
@@ -147,16 +147,16 @@ controllers:
           wheel_speed_direction: -1.0
     trigger:
       joint: "trigger_joint"
-      pid: { p: 30, i: 0.0, d: 0.5, i_clamp_max: 0.0, i_clamp_min: 0.0, antiwindup: true, publish_state: true }
+      pid: { p: 5.0, i: 0.0, d: 0.2, i_clamp_max: 0.0, i_clamp_min: 0.0, antiwindup: true, publish_state: true }
     push_per_rotation: 8
     push_qd_threshold: 0.90
-    block_effort: 2.8
+    block_effort: 1.2
     block_speed: 0.1
     block_duration: 0.1
-    block_overtime: 0.5
-    anti_block_angle: 0.3
+    block_overtime: 0.25
+    anti_block_angle: 0.26
     anti_block_threshold: 0.1
-    forward_push_threshold: 0.05
+    forward_push_threshold: 0.28
     exit_push_threshold: 0.07
     wheel_speed_drop_threshold: 3.8
     wheel_speed_raise_threshold: 0.7
