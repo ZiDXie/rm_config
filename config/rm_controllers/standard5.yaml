@@ -73,6 +73,7 @@ controllers:
   gimbal_controller:
     type: rm_gimbal_controllers/DualYawController
 
+    moment_of_inertia: 0.005
     track_solver_type: "external_mpc_aim"       # bullet_solver | external_mpc_aim
     external_mpc_aim_topic: "/sp_vision/mpc_gimbal_aim"
     external_aim_timeout: 0.1
@@ -84,14 +85,14 @@ controllers:
         pid_pos: { p: 20.0, i: 0, d: 0.8, i_max: 0.0, i_min: 0.0, antiwindup: true, publish_state: true }
       yaw:
         joint: "yaw_joint"
-        pid: { p: 0.4, i: 8., d: 0.0, i_clamp_max: 0.1, i_clamp_min: -0.1, antiwindup: true, publish_state: true }
-        pid_pos: { p: 12., i: 0, d: 0.0, i_max: 0.0, i_min: 0.0, antiwindup: true, publish_state: true }
+        pid: { p: 0.5, i: 15., d: 0.0, i_clamp_max: 0.1, i_clamp_min: -0.1, antiwindup: true, publish_state: true }
+        pid_pos: { p: 15., i: 0, d: 0.0, i_max: 0.0, i_min: 0.0, antiwindup: true, publish_state: true }
         k_v: 1.0
         accel: 28.0
       pitch:
         joint: "pitch_joint"
-        pid: { p: 1.8, i: 16., d: 0.0, i_clamp_max: 1.0, i_clamp_min: -1.0, antiwindup: true, publish_state: true }
-        pid_pos: { p: 15.0, i: 0.0, d: 0.05, i_max: 0.0, i_min: 0.0, antiwindup: true, publish_state: true }
+        pid: { p: 0.8, i: 10., d: 0.0, i_clamp_max: 0.5, i_clamp_min: -0.5, antiwindup: true, publish_state: true }
+        pid_pos: { p: 10.0, i: 0.0, d: 0.0, i_max: 0.0, i_min: 0.0, antiwindup: true, publish_state: true }
         k_v: 1.0
         accel: 40.0
     chassis_vel:
@@ -99,9 +100,9 @@ controllers:
       debug: true
     imu_name: "gimbal_imu"
     feedforward:
-      gravity: 15.0
+      gravity: 13.5
       enable_gravity_compensation: false
-      mass_origin: [0.164434,-0.011111,0.000071]
+      mass_origin: [0.155777, -0.008377, 0.00007]
     bullet_solver:
       resistance_coff_qd_10: 0.001
       resistance_coff_qd_15: 0.001
@@ -150,14 +151,14 @@ controllers:
       pid: { p: 5.0, i: 0.0, d: 0.2, i_clamp_max: 0.0, i_clamp_min: 0.0, antiwindup: true, publish_state: true }
     push_per_rotation: 8
     push_qd_threshold: 0.90
-    block_effort: 1.2
+    block_effort: 0.7
     block_speed: 0.1
     block_duration: 0.1
     block_overtime: 0.25
     anti_block_angle: 0.26
     anti_block_threshold: 0.1
     forward_push_threshold: 0.28
-    exit_push_threshold: 0.07
+    exit_push_threshold: 0.3
     wheel_speed_drop_threshold: 3.8
     wheel_speed_raise_threshold: 0.7
     freq_threshold: 20.0

@@ -73,6 +73,7 @@ controllers:
   gimbal_controller:
     type: rm_gimbal_controllers/DualYawController
 
+    moment_of_inertia: 0.005
     track_solver_type: "external_mpc_aim"       # bullet_solver | external_mpc_aim
     external_mpc_aim_topic: "/sp_vision/mpc_gimbal_aim"
     external_aim_timeout: 0.1
@@ -157,7 +158,7 @@ controllers:
     anti_block_angle: 0.26
     anti_block_threshold: 0.1
     forward_push_threshold: 0.28
-    exit_push_threshold: 0.2
+    exit_push_threshold: 0.3
     wheel_speed_drop_threshold: 3.8
     wheel_speed_raise_threshold: 0.7
     freq_threshold: 20.0

@@ -1,9 +1,9 @@
 can_motors:
-  - can_id: 4
+  - can_id: 1
     can_bus: 0
     name: "right_front_wheel_motor"
     type: "M3508"
-  - can_id: 1
+  - can_id: 4
     can_bus: 0
     name: "left_front_wheel_motor"
     type: "M3508"
@@ -35,6 +35,6 @@ can_motors:
 can_imus:
   - can_bus: 1
     name: "gimbal_imu"
-    bias: [ 0.00, 0.00, 0.00 ]
+    bias: [ -0.0018, 0.0006, -0.0003 ]
 dbus:
   - name: "dbus"
